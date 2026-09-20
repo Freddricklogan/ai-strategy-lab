@@ -1,0 +1,77 @@
+/* Demo-specific styles. Shell tokens come from shell/exec-shell.css. */
+.asl-statusbar { margin: 0 0 14px; padding: 8px 12px; border-radius: var(--radius-sm); background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--tone, var(--border)); font-size: .8rem; color: var(--muted); min-height: 2.2em; }
+[data-tone='ok'] { --tone: var(--ok); } [data-tone='warn'] { --tone: var(--warn); } [data-tone='danger'] { --tone: var(--danger); } [data-tone='muted'] { --tone: var(--muted); }
+[data-rec='build'] { --rec: var(--ok); } [data-rec='buy'] { --rec: var(--accent); } [data-rec='wait'] { --rec: var(--muted); } [data-rec='review'] { --rec: var(--danger); }
+.asl-muted { color: var(--muted); font-size: .82rem; margin: 0; }
+
+.asl-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
+.asl-panel h3 { margin: 0 0 4px; font-size: 1rem; }
+.asl-hint { margin: 0 0 12px; font-size: .8rem; color: var(--muted); }
+.asl-grid { display: grid; grid-template-columns: 300px minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+@media (max-width: 1100px) { .asl-grid { grid-template-columns: 280px minmax(0, 1fr); } .asl-grid > :last-child { grid-column: 1 / -1; } }
+@media (max-width: 720px) { .asl-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.asl-toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.asl-btn { padding: 7px 12px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: var(--radius-sm); font: inherit; font-size: .8rem; cursor: pointer; }
+.asl-btn:hover { background: var(--border); }
+.asl-btn:disabled { opacity: .5; cursor: not-allowed; }
+.asl-btn--primary { background: var(--accent); border-color: var(--accent); color: #07101f; font-weight: 600; }
+
+.asl-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.asl-count { background: var(--panel-2); border: 1px solid var(--border); border-left: 3px solid var(--rec); border-radius: var(--radius-sm); padding: 8px 10px; }
+.asl-count__n { font-size: 1.4rem; font-weight: 700; color: var(--rec); }
+.asl-count__l { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+
+.asl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.asl-item { width: 100%; text-align: left; display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font: inherit; cursor: pointer; }
+.asl-item:hover { border-color: var(--accent); }
+.asl-item.is-selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--panel-2)); }
+.asl-item__name { font-size: .84rem; font-weight: 600; }
+.asl-item__meta { font-size: .7rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.asl-chip { align-self: flex-start; font-size: .68rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: color-mix(in srgb, var(--rec) 18%, transparent); color: var(--rec); white-space: nowrap; }
+
+.asl-fields { display: grid; gap: 8px; margin-bottom: 12px; }
+.asl-field label { display: block; font-size: .72rem; color: var(--muted); margin-bottom: 3px; }
+.asl-text { width: 100%; background: var(--panel-2); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 6px 8px; font: inherit; font-size: .84rem; box-sizing: border-box; }
+.asl-verdict { border: 1px solid var(--rec); border-left-width: 4px; border-radius: var(--radius-sm); padding: 10px 12px; margin-bottom: 12px; background: color-mix(in srgb, var(--rec) 8%, var(--panel-2)); }
+.asl-verdict__rec { font-size: 1.1rem; font-weight: 700; color: var(--rec); }
+.asl-verdict__scores { font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.asl-verdict__why { margin: 6px 0 0; font-size: .8rem; }
+.asl-group { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 12px 4px; margin: 0 0 10px; }
+.asl-group legend { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 4px; }
+.asl-slider { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; column-gap: 8px; margin-bottom: 6px; }
+.asl-slider label { font-size: .78rem; color: var(--text); }
+.asl-slider__val { font-size: .78rem; color: var(--accent); font-weight: 700; text-align: right; }
+.asl-slider input[type='range'] { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); }
+[data-group='risk'] .asl-slider input[type='range'] { accent-color: var(--danger); }
+
+.asl-matrix { width: 100%; height: auto; display: block; overflow: visible; }
+.asl-axis { stroke: var(--border); stroke-width: 1; }
+.asl-threshold { stroke: var(--warn); stroke-width: 1; stroke-dasharray: 4 4; opacity: .8; }
+.asl-axis-label { fill: var(--muted); font-size: 11px; text-anchor: middle; }
+.asl-axis-label--y { transform: rotate(-90deg); transform-origin: 12px 160px; }
+.asl-threshold-label { fill: var(--warn); font-size: 10px; }
+.asl-threshold-label--r { text-anchor: end; }
+.asl-dot circle { fill: color-mix(in srgb, var(--rec) 35%, transparent); stroke: var(--rec); stroke-width: 1.5; cursor: pointer; }
+.asl-dot.is-selected circle { stroke-width: 3; }
+.asl-dot:focus-visible circle { stroke: var(--text); }
+.asl-dot__label { fill: var(--text); font-size: 10px; pointer-events: none; paint-order: stroke; stroke: var(--panel); stroke-width: 3px; stroke-linejoin: round; }
+
+.asl-weights { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 12px; margin: 0 0 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px 14px; }
+.asl-weights legend { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 4px; }
+.asl-weight { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: .78rem; }
+.asl-num { width: 64px; background: var(--panel-2); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 3px 6px; font: inherit; font-size: .8rem; }
+
+.asl-table { width: 100%; border-collapse: collapse; }
+.asl-table th { text-align: left; font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 8px 6px; border-bottom: 1px solid var(--border); }
+.asl-table td { padding: 8px 6px; border-bottom: 1px solid var(--border); font-size: .82rem; vertical-align: top; }
+.asl-scroll { overflow-x: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+@media print {
+  .exec-header, .exec-kpis, .exec-footer, .exec-skip-link, .asl-toolbar, .asl-statusbar, .asl-grid, #weights-panel { display: none !important; }
+  body { background: #fff; color: #000; }
+  .asl-panel { border: none; padding: 0; }
+  .asl-chip { color: #000; background: none; border: 1px solid #000; }
+  .asl-table td, .asl-table th { border-bottom: 1px solid #999; color: #000; }
+}

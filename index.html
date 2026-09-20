@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>AI Strategy Lab — triage AI initiatives on value, feasibility and risk</title>
+<meta name="description" content="Score AI initiatives on value, feasibility and risk (dimensions modelled on the NIST AI RMF) and get a build, buy, wait or review recommendation with the rule that produced it. Editable weights and thresholds, portfolio matrix, printable report. Client-side; sample data.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freddricklogan.github.io/ai-strategy-lab/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1220'/%3E%3Cline x1='6' y1='26' x2='26' y2='26' stroke='%2322304d' stroke-width='2'/%3E%3Cline x1='6' y1='26' x2='6' y2='6' stroke='%2322304d' stroke-width='2'/%3E%3Ccircle cx='21' cy='11' r='4' fill='%233fb950'/%3E%3Ccircle cx='12' cy='18' r='3' fill='%2358a6ff'/%3E%3Ccircle cx='17' cy='21' r='2.5' fill='%23f85149'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Freddrick Logan">
+<meta property="og:title" content="AI Strategy Lab — triage AI initiatives on value, feasibility and risk">
+<meta property="og:description" content="Build, buy, wait or review — with the rule that produced it. Editable weights, portfolio matrix, printable report.">
+<meta property="og:url" content="https://freddricklogan.github.io/ai-strategy-lab/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Strategy Lab — triage AI initiatives on value, feasibility and risk">
+<meta name="twitter:description" content="Build, buy, wait or review — with the rule that produced it. Editable weights, portfolio matrix, printable report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Strategy Lab","description":"Score AI initiatives on value, feasibility and risk and get a build, buy, wait or review recommendation with the rule that produced it. Client-side; sample data.","url":"https://freddricklogan.github.io/ai-strategy-lab/","applicationCategory":"BusinessApplication","operatingSystem":"Any (Web)","author":{"@type":"Person","name":"Freddrick Logan","url":"https://fredlogan.phd"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<main id="demo-root" class="exec-main">
+  <h2 class="sr-only">AI initiative triage</h2>
+  <p id="status" class="asl-statusbar" role="status" aria-live="polite"></p>
+  <div class="asl-toolbar" role="toolbar" aria-label="Portfolio actions">
+    <button type="button" class="asl-btn asl-btn--primary" id="btn-add">Add initiative</button>
+    <button type="button" class="asl-btn" id="btn-delete">Remove selected</button>
+    <button type="button" class="asl-btn" id="btn-import">Import CSV</button>
+    <button type="button" class="asl-btn" id="btn-export">Export CSV</button>
+    <button type="button" class="asl-btn" id="btn-print">Print report</button>
+    <button type="button" class="asl-btn" id="btn-reset">Reset to sample</button>
+    <input type="file" id="file-import" accept="text/csv,.csv" class="sr-only" tabindex="-1" aria-label="Initiative CSV file">
+  </div>
+
+  <div class="asl-grid">
+    <section class="asl-panel" aria-labelledby="list-heading">
+      <h3 id="list-heading">Initiatives</h3>
+      <p class="asl-hint">Ordered by priority (value × feasibility − risk). Select one to score it.</p>
+      <div class="asl-summary" id="summary"></div>
+      <ul class="asl-list" id="list"></ul>
+    </section>
+    <section class="asl-panel" aria-labelledby="matrix-heading">
+      <h3 id="matrix-heading">Portfolio matrix</h3>
+      <p class="asl-hint">Feasibility across, value up; circle size is risk; colour is the recommendation. Dashed lines are the thresholds.</p>
+      <div id="matrix"></div>
+    </section>
+    <section class="asl-panel" aria-labelledby="editor-heading">
+      <h3 id="editor-heading">Score</h3>
+      <p class="asl-hint">1 = low, 5 = high. Risk dimensions follow the NIST AI RMF trustworthiness characteristics; higher is worse.</p>
+      <div id="editor"></div>
+    </section>
+  </div>
+
+  <section class="asl-panel" id="weights-panel" aria-labelledby="weights-heading">
+    <h3 id="weights-heading">Weights and thresholds</h3>
+    <p class="asl-hint">Every initiative is re-scored when any of these change. Rule: risk above the ceiling → review; value below the floor → wait; feasible and differentiating → build; feasible and commodity → buy; not feasible → buy if commodity, else wait.</p>
+    <div id="weights"></div>
+  </section>
+
+  <section class="asl-panel" aria-labelledby="report-heading">
+    <h3 id="report-heading">Portfolio report</h3>
+    <p class="asl-hint">Every initiative with scores, recommendation and rationale. "Print report" produces a clean page for PDF.</p>
+    <div class="asl-scroll"><table class="asl-table" id="report"></table></div>
+  </section>
+</main>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

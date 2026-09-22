@@ -133,6 +133,7 @@ $<HTMLInputElement>('file-import').addEventListener('change', (e) => {
 /* ---------------------------------------------------------------- shell */
 
 const shell = mountExecShell({
+  theme: 'midnight',
   title: 'AI Strategy Lab',
   tagline: 'Triage AI initiatives on value, feasibility and risk — dimensions modelled on the NIST AI Risk Management Framework — and get a build, buy, wait or review recommendation with the rule that produced it. Weights and thresholds are visible and editable. Sample portfolio; illustrative.',
   repo: REPO,

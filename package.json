@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "lint": "eslint .",
+    "lint": "eslint . && node src/shell/contrast-check.mjs src/shell/exec-shell.css",
     "validate": "html-validate index.html",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run validate && npm test && npm run build"

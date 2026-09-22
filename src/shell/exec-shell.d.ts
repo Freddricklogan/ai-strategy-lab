@@ -18,6 +18,9 @@ export interface ShellTokens {
 export const THEMES: readonly ThemeName[];
 export function applyTheme(theme: ThemeName, accent?: 'primary' | 'secondary'): void;
 export function tokens(): ShellTokens;
-export function onSchemeChange(callback: (t: ShellTokens) => void): () => void;
+export function currentScheme(): 'dark' | 'light';
+export function applyScheme(scheme: 'dark' | 'light', persist?: boolean): void;
+export function restoreScheme(): void;
+export function onSchemeChange(callback: (t: ShellTokens, scheme: 'dark' | 'light') => void): () => void;
 export function mountExecShell(config: ShellConfig): ShellApi;
 export default mountExecShell;

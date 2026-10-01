@@ -32,7 +32,7 @@ Worth knowing: the risk dimensions are modelled on the NIST framework's characte
 
 ## 6. Evidence
 
-Measured in continuous integration and a headless-browser smoke test of the built site: 19 unit tests passing across two files, 100% statement coverage over the pure modules, type-checked ESLint and `tsc --noEmit` clean, HTML validation clean, CodeQL and dependency scanning enabled. The rule is tested at its boundaries — risk 3.5 builds, 3.51 goes to review; value 2.49 waits, 2.5 proceeds. In the browser: zero console errors; the tour raises two risk scores on the skills matcher and the verdict flips from build to governance review, the review count moving from three to four; an invalid weight is refused with a message; a risk ceiling of five clears every review. No horizontal scroll at 400 pixels.
+Measured in continuous integration and a headless-browser smoke test of the built site: 27 unit tests passing across two files, 100% statement coverage over the pure modules, type-checked ESLint and `tsc --noEmit` clean, HTML validation clean, CodeQL and dependency scanning enabled. The rule is tested at its boundaries — risk 3.5 builds, 3.51 goes to review; value 2.49 waits, 2.5 proceeds. In the browser: zero console errors; the tour raises two risk scores on the skills matcher and the verdict flips from build to governance review, the review count moving from three to four; an invalid weight is refused with a message; a risk ceiling of five clears every review. No horizontal scroll at 400 pixels.
 
 ## 7. What it would take to run this in production
 
